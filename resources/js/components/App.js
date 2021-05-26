@@ -14,10 +14,9 @@ import Home from './Home';
 function App() {
 
     return (
-        <div>
+        
             <Router>
                 <Nav />
-
 
                 <Switch>
                     <Route path="/about" component={About} />
@@ -25,14 +24,12 @@ function App() {
                     
                     <Route path="/users" component={Home}/>
                     
-                    <Route path="/" component={Home} />
-                    
-             
+                    <Route path="/" exact component={Home} />
+                                 
                 </Switch>
 
             </Router>
             
-        </div>
     );
 }
 
