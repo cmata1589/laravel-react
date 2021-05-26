@@ -5,7 +5,7 @@ import React, { useState, useEffect} from 'react';
         Switch,
         Route,
 
-    } from "react-router-dom";
+    } from 'react-router-dom';
 
 import About from './About';
 import Nav from './Nav';
@@ -15,23 +15,22 @@ function App() {
 
     return (
         <div>
-           
-            {/* <Nav /> */}
+            <Router>
+                <Nav />
 
-            <Home />
-                {/* <Switch>
-                    <Route path="/about">
-                        <About />
-                    </Route>
-                    <Route path="/users">
-                        <Users />
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch> */}
 
-        
+                <Switch>
+                    <Route path="/about" component={About} />
+                        
+                    
+                    <Route path="/users" component={Home}/>
+                    
+                    <Route path="/" component={Home} />
+                    
+             
+                </Switch>
+
+            </Router>
             
         </div>
     );
