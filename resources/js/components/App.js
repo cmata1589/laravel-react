@@ -4,6 +4,7 @@ import React, { useState, useEffect} from 'react';
         BrowserRouter as Router,
         Switch,
         Route,
+        Link
 
     } from 'react-router-dom';
 
@@ -14,22 +15,21 @@ import Home from './Home';
 function App() {
 
     return (
-        
+        <>
             <Router>
                 <Nav />
+                <div>
+                    <Route exact path="/about">
+                        <About />
+                    </Route>
+                    <Route path="/users" component={Home} />
 
-                <Switch>
-                    <Route path="/about" component={About} />
-                        
-                    
-                    <Route path="/users" component={Home}/>
-                    
-                    <Route path="/" exact component={Home} />
-                                 
-                </Switch>
-
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                </div>
             </Router>
-            
+        </>
     );
 }
 
