@@ -9,15 +9,17 @@ import React, { useState, useEffect} from 'react';
     } from 'react-router-dom';
 
 import About from './About';
-import Nav from './Nav';
+import Navbar from './Navbar';
 import Home from './Home';
+
+import styles  from '../../css/styles.css';
 
 function App() {
 
     return (
-        <>
+        <div className="container  body">
             <Router>
-                <Nav />
+                <Navbar />
                 <div>
                     <Route exact path="/about">
                         <About />
@@ -29,7 +31,7 @@ function App() {
                     </Route>
                 </div>
             </Router>
-        </>
+        </div>
     );
 }
 
