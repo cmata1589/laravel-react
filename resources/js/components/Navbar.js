@@ -12,8 +12,9 @@ const Navbar = () => {
                     <Link to="/about">About</Link>
                 </a>
                 <a className="navbar-item">
-                    <Link to="/users">Users</Link>
+                    <Link to="/projects">Users</Link>
                 </a>
+               
             
             </div>
             <div className="navbar-end">

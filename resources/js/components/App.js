@@ -11,8 +11,12 @@ import React, { useState, useEffect} from 'react';
 import About from './About';
 import Navbar from './Navbar';
 import Home from './Home';
+import NewProject from './NewProject';
+import SingleProject from './SingleProject';
+import ProjectsList from './ProjectsList';
 
 import styles  from '../../css/styles.css';
+
 
 function App() {
 
@@ -24,11 +28,11 @@ function App() {
                     <Route exact path="/about">
                         <About />
                     </Route>
-                    <Route path="/users" component={Home} />
-
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
+                    <Route path="/projects" component={ProjectsList} />
+                    <Route path='/create' component={NewProject} />                  
+                    <Route path='/:id' component={SingleProject} />
+                    <Route exact path="/"component={Home} />
+                     
                 </div>
             </Router>
         </div>
