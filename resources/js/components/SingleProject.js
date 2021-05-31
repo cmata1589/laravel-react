@@ -1,5 +1,6 @@
 import axios from 'axios'
     import React, { Component } from 'react'
+import Task from './Task'
 
     class SingleProject extends Component {
       constructor (props) {
@@ -96,66 +97,72 @@ import axios from 'axios'
         const { project, tasks } = this.state
 
         return (
-          <div className='container py-4'>
-            <div className='row justify-content-center'>
-              <div className='col-md-8'>
-                <div className='card'>
-                  <div className='card-header'>{project.name}</div>
-                  <div className='card-body'>
+            <div className="card">
+                <div className="card-header-title">{project.name}</div>
+                <div className="card-body">
                     <p>{project.description}</p>
-
-                    <button className='btn btn-primary btn-sm'>
-                      Mark as completed
-                    </button>
-
-                    <hr />
-                    <form onSubmit={this.handleAddNewTask}>
-                        <div className='input-group'>
-                            <input
-                            type='text'
-                            name='title'
-                            className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
-                            placeholder='Task title'
-                            value={this.state.title}
-                            onChange={this.handleFieldChange}
-                            />
-                            <div className='input-group-append'>
-                            <button className='btn btn-primary'>Add</button>
-                            </div>
-                            {this.renderErrorFor('title')}
-                        </div>
-                    </form>
-
-                    <ul className='list-group mt-3'>
-                      {tasks.map(task => (
-                        <li
-                          className='list-group-item d-flex justify-content-between align-items-center'
-                          key={task.id}
-                        >
-                          {task.title}
-
-                          <button
-                            className='btn btn-primary btn-sm'
-                            onClick={this.handleMarkProjectAsCompleted}
-                            >
-                            Mark as completed
-                            </button>
-                            <button
-                                className='btn btn-primary btn-sm'
-                                onClick={this.handleMarkTaskAsCompleted.bind(this,task.id)}
-                                >
-                                Mark as completed
-                            </button>
-
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
-              </div>
+                <button className="button is-success">Mark as completed</button>
+
+                <hr />
+
+                <h2 class="title is-2">Tasks</h2>
+
+                <ul className="is-flex is-justify-content-center">
+                <table class="table ">
+                    {tasks.map((task) => (
+                        
+                            <tr>
+                                <th>
+                                    {" "}
+                                    <Task title={task.title} />
+                                </th>
+                                <th>
+                                    {" "}
+                                    <button
+                                        className="button is-link"
+                                        onClick={this.handleMarkTaskAsCompleted.bind(
+                                            this,
+                                            task.id
+                                        )}
+                                    >
+                                        Mark as completed
+                                    </button>
+                                </th>
+                            </tr>
+                        
+                    ))}
+                 </table>
+                </ul>
+               
+                <div className="level">
+                    <div className="level-item">
+                        <form onSubmit={this.handleAddNewTask}>
+                            <div>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    className={`input ${
+                                        this.hasErrorFor("title")
+                                            ? "is-danger"
+                                            : ""
+                                    }`}
+                                    placeholder="New Task title"
+                                    value={this.state.title}
+                                    onChange={this.handleFieldChange}
+                                />
+                                <div className="input-group-append">
+                                    <button className="button is-link mt-4 mb-4">
+                                        Add
+                                    </button>
+                                </div>
+                                {this.renderErrorFor("title")}
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
-        )
+        );
       }
     }
 

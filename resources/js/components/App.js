@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, Component} from 'react';
  import {
         BrowserRouter as Router,
         Switch,
@@ -25,9 +25,7 @@ function App() {
             <Router>
                 <Navbar />
                 <div>
-                    <Route exact path="/about">
-                        <About />
-                    </Route>
+                    <Route path="/about" component={About} />
                     <Route path="/projects" component={ProjectsList} />
                     <Route path='/create' component={NewProject} />                  
                     <Route path='/:id' component={SingleProject} />

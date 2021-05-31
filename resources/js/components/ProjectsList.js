@@ -25,25 +25,43 @@
             <div className='row justify-content-center'>
               <div className='col-md-8'>
                 <div className='card'>
-                  <div className='card-header'>All projects</div>
-                  <div className='card-body'>
-                    <Link className='btn btn-primary btn-sm mb-3' to='/create'>
-                      Create new project
-                    </Link>
-                    <ul className='list-group list-group-flush'>
+                  <div className='card-header-title'>All projects</div>
+                  <div className='card-content'>
+                    <div className='content'>
+                   
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          
+                          <th><abbr title="Project Name">Project Name</abbr></th>
+                          <th><abbr title="Description">Description</abbr></th>
+                          <th><abbr title="Number of tasks"># Tasks</abbr></th>
+                        </tr>
+                      </thead>
                       {projects.map(project => (
-                        <Link
-                          className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
+                      <thead>
+                        <tr>
+                          <th><Link
+                          className=''
                           to={`/${project.id}`}
                           key={project.id}
                         >
                           {project.name}
-                          <span className='badge badge-primary badge-pill'>
-                            {project.tasks_count}
-                          </span>
-                        </Link>
+                          
+                        </Link></th>
+                          <th>{project.description}</th>
+                          <th>{project.tasks_count}</th>
+                        </tr>
+                      </thead>
+
                       ))}
-                    </ul>
+                      </table>
+
+                      <Link className='button is-light mb-3' to='/create'>
+                      Create new project
+                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
